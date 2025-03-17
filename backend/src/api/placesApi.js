@@ -8,7 +8,7 @@ async function getPlaceId(inputText) {
   try {
     const response = await axios.get(findPlaceUrl, {
       params: {
-        input: inputText.trim(),
+        input: encodeURIComponent(inputText.trim()),
         inputtype: "textquery",
         fields: "place_id",
         key: process.env.PLACES_API_KEY,

@@ -19,7 +19,7 @@ const port = process.env.PORT || 4000;
 
 // Enable CORS
 app.use(cors({
-  origin: process.env.CORS_ORIGIN || "https://dashboard-front-e6i9.onrender.com",
+  origin: process.env.CORS_ORIGIN || "http://localhost:5173",
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
@@ -151,6 +151,11 @@ app.get('/api/get-counts', async (req, res) => {
   app.use('/api', authRouter);
   app.use("/api/milestone", adminRouter);
   app.use("/api",protectedRouter)
+  //scheduling: 
+  // Add this to your existing Express routes
+app.get('/keep-alive', (req, res) => {
+  res.status(200).json({ message: 'Server is awake!' });
+});
 // Database connection Here: 
 
 connectDB()
