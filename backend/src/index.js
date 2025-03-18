@@ -12,6 +12,7 @@ import {getReviews} from "./api/apify.js";
 import { authenticateAdmin } from "./middleware/auth.middleware.js";
 import reviewsRouter from "./routes/repliedReviews.routes.js"
 import { main } from "./api/placesApi.js";
+import path from 'path';
 ;
 dotenv.config({});
 const app = express();
