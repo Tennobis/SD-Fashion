@@ -160,7 +160,7 @@ app.get('/keep-alive', (req, res) => {
 app.use(express.static(path.join(__dirname, 'dist')));
 
 // This is the catch-all route handler that should be near the end of your file
-app.get('*', (req, res) => {
+app.get('*', (_, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 // Database connection Here: 
