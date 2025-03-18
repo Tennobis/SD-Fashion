@@ -7,4 +7,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Ping server
-        run: curl -X GET  https://localhost:3000/api/keep-alive
+        run: curl -X GET  https://sd-fashion.onrender.com/api/keep-alive

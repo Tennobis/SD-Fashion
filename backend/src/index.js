@@ -155,6 +155,13 @@ app.get('/api/get-counts', async (req, res) => {
 app.get('/keep-alive', (req, res) => {
   res.status(200).json({ message: 'Server is awake!' });
 });
+// Serve static files from the Vite build output directory (dist)
+app.use(express.static(path.join(__dirname, 'dist')));
+
+// This is the catch-all route handler that should be near the end of your file
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+});
 // Database connection Here: 
 
 connectDB()
