@@ -13,6 +13,9 @@ import { authenticateAdmin } from "./middleware/auth.middleware.js";
 import reviewsRouter from "./routes/repliedReviews.routes.js"
 import { main } from "./api/placesApi.js";
 import path from 'path';
+import { fileURLToPath } from "url";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 ;
 dotenv.config({});
 const app = express();
@@ -157,11 +160,11 @@ app.get('/keep-alive', (req, res) => {
   res.status(200).json({ message: 'Server is awake!' });
 });
 // Serve static files from the Vite build output directory (dist)
-app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname, '../../dist')));
 
 // This is the catch-all route handler that should be near the end of your file
-app.get('*', (_, res) => {
-  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../../dist', 'index.html'));
 });
 // Database connection Here: 
 
